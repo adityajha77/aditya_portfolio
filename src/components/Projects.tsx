@@ -4,6 +4,22 @@ import { Button } from '@/components/ui/button';
 const Projects = () => {
   const projects = [
     {
+      title: 'Chefbook',
+      description: 'A platform where users can discover and book professional chefs for various events, offering a seamless culinary experience.',
+      image: '/lovable-uploads/chefbook.png',
+      technologies: ['React', 'Node.js', 'Express', 'MongoDB', 'Stripe'],
+      githubUrl: 'https://github.com/adityajha77/CHEFBOOK',
+      liveUrl: 'https://chefbook-teal.vercel.app/'
+    },
+    {
+      title: 'Enviropulse',
+      description: 'An environmental monitoring application providing real-time data and insights on local air and water quality to promote ecological awareness.',
+      image: '/lovable-uploads/enviropulse.png',
+      technologies: ['React', 'Python', 'Flask', 'PostgreSQL', 'IoT'],
+      githubUrl: 'https://github.com/adityajha77/enviropulse',
+      liveUrl: '#'
+    },
+    {
       title: 'TrackBharat',
       description: 'Making democracy transparent and people-powered. Track political promises, vote on local issues, and hold representatives accountable in your area.',
       image: '/lovable-uploads/trackbharat.png',
