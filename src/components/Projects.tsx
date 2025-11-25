@@ -4,6 +4,14 @@ import { Button } from '@/components/ui/button';
 const Projects = () => {
   const projects = [
     {
+      title: 'TokenEstate',
+      description: 'A decentralized property management platform utilizing Solana blockchain for secure tokenized real estate transactions.',
+      image: '/lovable-uploads/tokenestate.png',
+      technologies: ['Solana', 'Rust', 'React', 'Node.js', 'MongoDB'],
+      githubUrl: 'https://github.com/adityajha77/property_collesium',
+      liveUrl: 'https://property-collesium.vercel.app/'
+    },
+    {
       title: 'Chefbook',
       description: 'A platform where users can discover and book professional chefs for various events, offering a seamless culinary experience.',
       image: '/lovable-uploads/chefbook.png',

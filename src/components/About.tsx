@@ -1,8 +1,8 @@
 const About = () => {
   const stats = [
     { number: '1+', label: 'YEARS OF\nEXPERIENCE' },
-    { number: '10+', label: 'PROJECTS\nCOMPLETED' },
-    { number: '5+', label: 'TECHNOLOGIES\nMASTERED' }
+    { number: '20+', label: 'PROJECTS\nCOMPLETED' },
+    { number: '10+', label: 'TECHNOLOGIES\nMASTERED' }
   ];
 
   const skills = [

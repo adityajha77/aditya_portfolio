@@ -50,10 +50,11 @@ const Hero = () => {
             >
               Connect with me
             </Button>
-            <Button 
-              variant="outline" 
+            <Button
+              variant="outline"
               size="lg"
               className="text-lg px-8 py-6 border-2 border-primary/20 hover:border-primary/40 smooth-transition"
+              onClick={() => window.open('/lovable-uploads/aditya_jha_resume.pdf', '_blank')}
             >
               My resume
             </Button>
