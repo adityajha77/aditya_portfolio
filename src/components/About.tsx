@@ -8,9 +8,9 @@ const About = () => {
   const skills = [
     { name: 'React & Next.js', level: 90 },
     { name: 'Node.js & Express', level: 85 },
-    { name: 'MongoDB & PostgreSQL', level: 80 },
+    { name: 'MongoDB & PostgreSQL', level: 90 },
     { name: 'Flutter & Dart', level: 75 },
-    { name: 'Solana Web3', level: 70 },
+    { name: 'Web3(RUST,SOLIDITY)', level: 80 },
     { name: 'C++ Programming', level: 85 }
   ];
 
