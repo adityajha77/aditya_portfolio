@@ -248,10 +248,10 @@ const Index = () => {
                     e.preventDefault();
                     setIsSubmitting(true);
                     
-                    // TODO: Replace these with your actual EmailJS IDs (see emailjs_instructions.md)
-                    const SERVICE_ID = "YOUR_SERVICE_ID";
-                    const TEMPLATE_ID = "YOUR_TEMPLATE_ID";
-                    const PUBLIC_KEY = "YOUR_PUBLIC_KEY";
+                    // Actual EmailJS credentials
+                    const SERVICE_ID = "adityajha07";
+                    const TEMPLATE_ID = "template_fcxq4hg";
+                    const PUBLIC_KEY = "RyhUsbd9jh7TzstkO";
                     
                     emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, e.currentTarget, PUBLIC_KEY)
                       .then((result) => {
@@ -264,7 +264,7 @@ const Index = () => {
                       });
                   }}>
                     <div className="grid gap-2">
-                      <Input id="user_name" name="user_name" placeholder="Your Name" required className="bg-background/50 border-border/50" />
+                      <Input id="from_name" name="from_name" placeholder="Your Name" required className="bg-background/50 border-border/50" />
                     </div>
                     <div className="grid gap-2">
                       <Input id="user_email" name="user_email" type="email" placeholder="Your Email address" required className="bg-background/50 border-border/50" />
