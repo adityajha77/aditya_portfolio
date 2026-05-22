@@ -66,9 +66,24 @@ export const SkillRunner = () => {
         jump();
       }
     };
+    
+    const handleGlobalTap = (e: MouseEvent | TouchEvent) => {
+      if (gameOver) return;
+      // Prevent jumping if clicking a button
+      if ((e.target as HTMLElement).closest('button')) return;
+      jump();
+    };
+
     window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [jump]);
+    window.addEventListener('mousedown', handleGlobalTap);
+    window.addEventListener('touchstart', handleGlobalTap, { passive: true });
+    
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      window.removeEventListener('mousedown', handleGlobalTap);
+      window.removeEventListener('touchstart', handleGlobalTap);
+    };
+  }, [jump, gameOver]);
 
   const startGame = () => {
     stateRef.current = {
@@ -320,18 +335,19 @@ export const SkillRunner = () => {
 
         {/* Game Over Overlay */}
         {gameOver && (
-          <div className="absolute inset-0 bg-background/90 backdrop-blur-md flex flex-col items-center justify-center p-6 text-center animate-in fade-in zoom-in duration-300 z-20 pointer-events-none">
-            <Trophy className="h-16 w-16 text-yellow-500 mb-4" />
-            <h3 className="text-3xl font-bold mb-1">Game Over</h3>
-            <p className="text-muted-foreground mb-4">You mastered {collectedSkills.length} full skills!</p>
+          <div className="absolute inset-0 bg-background/90 backdrop-blur-md flex flex-col items-center justify-center p-4 md:p-6 text-center animate-in fade-in zoom-in duration-300 z-20 pointer-events-none">
+            <Trophy className="h-10 w-10 md:h-16 md:w-16 text-yellow-500 mb-2 md:mb-4" />
+            <h3 className="text-2xl md:text-3xl font-bold mb-1">Game Over</h3>
+            <p className="text-xs md:text-sm text-muted-foreground mb-3 md:mb-4">You mastered {collectedSkills.length} full skills!</p>
             
-            <div className="flex flex-wrap justify-center gap-2 mb-6 max-w-[400px]">
-              {collectedSkills.map((s, i) => (
-                <span key={i} className="text-sm bg-primary/20 text-primary px-3 py-1 rounded-full font-bold">{s}</span>
+            <div className="flex flex-wrap justify-center gap-1.5 md:gap-2 mb-4 md:mb-6 max-w-[350px]">
+              {collectedSkills.slice(-6).map((s, i) => (
+                <span key={i} className="text-[10px] md:text-sm bg-primary/20 text-primary px-2 py-0.5 md:px-3 md:py-1 rounded-full font-bold">{s}</span>
               ))}
+              {collectedSkills.length > 6 && <span className="text-[10px] md:text-sm text-muted-foreground self-center">+{collectedSkills.length - 6} more</span>}
             </div>
 
-            <Button onClick={(e) => { e.stopPropagation(); startGame(); }} className="rounded-full gap-2 px-8 h-12 pointer-events-auto">
+            <Button onClick={(e) => { e.stopPropagation(); startGame(); }} className="rounded-full gap-2 px-6 md:px-8 h-10 md:h-12 pointer-events-auto">
               <RotateCcw className="h-4 w-4" /> Try Again
             </Button>
           </div>
