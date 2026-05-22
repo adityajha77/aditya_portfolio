@@ -8,6 +8,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
+  DialogClose,
 } from "@/components/ui/dialog";
 
 interface Project {
@@ -39,7 +40,7 @@ const projects: Project[] = [
     title: 'Tokenized Estate',
     description: 'Real estate tokenization platform leveraging blockchain to fractionally divide high-value property assets for retail investors.',
     image: '/resources/tokenestate.png',
-    link: '#',
+    link: 'https://property-collesium.vercel.app/',
     github: 'https://github.com/adityajha77/property_collesium'
   },
   {
@@ -203,6 +204,13 @@ export const ProjectCarousel = () => {
                   <span>View more projects on GitHub</span>
                   <span className="text-sm text-muted-foreground font-normal">Explore my other open-source contributions</span>
                 </Button>
+                
+                {/* Mobile Close Button */}
+                <DialogClose asChild>
+                  <Button variant="ghost" className="w-full h-12 mt-2 rounded-2xl border border-border/50 md:hidden">
+                    Close
+                  </Button>
+                </DialogClose>
               </div>
             </DialogContent>
           </Dialog>
