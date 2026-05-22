@@ -3,6 +3,7 @@ import emailjs from '@emailjs/browser';
 import { BentoCard } from '@/components/ui/BentoCard';
 import { Button } from '@/components/ui/button';
 import { ProjectCarousel } from '@/components/ui/ProjectCarousel';
+import { SnakeGame } from '@/components/ui/SnakeGame';
 import { 
   Dialog,
   DialogContent,
@@ -303,6 +304,13 @@ const Index = () => {
               </div>
             </DialogContent>
           </Dialog>
+
+          {/* Snake Game Card */}
+          <BentoCard className="md:col-span-2 lg:col-span-4 row-span-2 p-0 overflow-hidden flex flex-col justify-center" delay={0.8}>
+            <div className="p-6 md:p-12 w-full h-full flex items-center justify-center bg-gradient-to-br from-background via-background to-primary/5">
+              <SnakeGame />
+            </div>
+          </BentoCard>
 
         </div>
       </main>
