@@ -24,7 +24,7 @@ export const BentoCard = ({ children, className, delay = 0, onClick, ...props }:
       onClick={onClick}
       className={cn(
         "relative rounded-3xl p-6 overflow-hidden glass-card",
-        "transition-all duration-300 hover:border-primary/40 hover:shadow-[0_0_30px_rgba(255,255,255,0.05)]",
+        "transition-[border-color,box-shadow] duration-300 hover:border-primary/40 hover:shadow-[0_0_30px_rgba(255,255,255,0.05)]",
         onClick && "cursor-pointer",
         className
       )}

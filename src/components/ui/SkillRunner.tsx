@@ -302,7 +302,7 @@ export const SkillRunner = () => {
 
       {/* Game Canvas Container */}
       <div 
-        className="relative w-full max-w-[800px] aspect-[4/3] md:aspect-[21/9] bg-background border-2 border-border/50 rounded-xl overflow-hidden shadow-inner cursor-pointer"
+        className="relative w-full max-w-[800px] aspect-[800/340] bg-background border-2 border-border/50 rounded-xl overflow-hidden shadow-inner cursor-pointer"
         onClick={(e) => {
           if ((e.target as HTMLElement).closest('button')) return;
           jump();
