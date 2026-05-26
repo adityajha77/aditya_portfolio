@@ -1,5 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import emailjs from '@emailjs/browser';
+import { AnimatedBackground } from '@/components/ui/AnimatedBackground';
+import { motion } from 'framer-motion';
 import { BentoCard } from '@/components/ui/BentoCard';
 import { Button } from '@/components/ui/button';
 import { ProjectCarousel } from '@/components/ui/ProjectCarousel';
@@ -61,7 +63,8 @@ const Index = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background text-foreground transition-colors duration-300">
+    <div className="min-h-screen bg-background/50 text-foreground transition-colors duration-300 relative">
+      <AnimatedBackground />
       {/* Top Bar */}
       <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between p-6 bg-background/80 backdrop-blur-md border-b border-border/50">
         <div className="font-bold text-xl tracking-tight">Aditya Jha</div>
@@ -91,12 +94,22 @@ const Index = () => {
           {/* Profile Text Card */}
           <BentoCard className="md:col-span-2 lg:col-span-2 row-span-2 flex flex-col justify-center p-8" delay={0.1}>
             <div>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
+              <motion.h1 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+                className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6"
+              >
                 Hi, I'm Aditya
-              </h1>
-              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-                <strong className="text-foreground font-semibold">Full Stack & Web3 Developer</strong> based in India with <strong className="text-foreground">2+ years</strong> of experience building scalable, modern web applications, decentralized platforms, and mobile apps. Passionate about competitive programming and open-source.
-              </p>
+              </motion.h1>
+              <motion.p 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+                className="text-lg md:text-xl text-muted-foreground leading-relaxed"
+              >
+                <strong className="text-foreground font-semibold text-glow">Full Stack & Web3 Developer</strong> based in India with <strong className="text-foreground">2+ years</strong> of experience building scalable, modern web applications, decentralized platforms, and mobile apps. Passionate about competitive programming and open-source.
+              </motion.p>
             </div>
             <div className="flex gap-4 mt-8">
               <Button 
@@ -208,18 +221,29 @@ const Index = () => {
           <Dialog>
             <DialogTrigger asChild>
               <BentoCard 
-                className="md:col-span-1 lg:col-span-1 row-span-2 flex flex-col justify-between group bg-card cursor-pointer hover:border-foreground/30 transition-all" 
+                className="md:col-span-1 lg:col-span-1 row-span-2 flex flex-col justify-between group bg-gradient-to-tl from-primary/10 via-background to-background cursor-pointer hover:border-primary/50 transition-all relative overflow-hidden" 
                 delay={0.7}
               >
-                <div className="flex justify-between items-start">
-                  <div className="p-4 bg-foreground rounded-full border border-border/50 text-background">
+                <div className="absolute -right-10 -bottom-10 opacity-10 group-hover:opacity-20 transition-opacity">
+                  <Send className="w-40 h-40" />
+                </div>
+                <div className="flex justify-between items-start relative z-10">
+                  <div className="p-4 bg-primary text-primary-foreground rounded-full border border-border/50 shadow-lg group-hover:scale-110 transition-transform">
                     <MessageSquare className="h-5 w-5" />
                   </div>
                   <ArrowUpRight className="h-5 w-5 text-muted-foreground group-hover:text-foreground transition-all group-hover:-translate-y-1 group-hover:translate-x-1" />
                 </div>
-                <div className="mt-8">
-                  <h3 className="text-2xl md:text-3xl font-bold tracking-tight mb-2">Get in touch</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">Let's build something great together. Send me a message!</p>
+                <div className="mt-8 relative z-10 flex flex-col gap-3">
+                  <div className="flex flex-col gap-1">
+                    <h3 className="text-sm font-medium text-muted-foreground uppercase tracking-wider">Contact</h3>
+                    <h3 className="text-2xl md:text-3xl font-bold tracking-tight">Get in touch</h3>
+                  </div>
+                  <div className="flex flex-col gap-2 mt-1">
+                    <span className="text-xs font-bold text-primary uppercase tracking-widest">Available for work</span>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      Let's build something great together. Send me a message and let's discuss your next project!
+                    </p>
+                  </div>
                 </div>
               </BentoCard>
             </DialogTrigger>

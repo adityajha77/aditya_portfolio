@@ -67,21 +67,10 @@ export const SkillRunner = () => {
       }
     };
     
-    const handleGlobalTap = (e: MouseEvent | TouchEvent) => {
-      if (gameOver) return;
-      // Prevent jumping if clicking a button
-      if ((e.target as HTMLElement).closest('button')) return;
-      jump();
-    };
-
     window.addEventListener('keydown', handleKeyDown);
-    window.addEventListener('mousedown', handleGlobalTap);
-    window.addEventListener('touchstart', handleGlobalTap, { passive: true });
     
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
-      window.removeEventListener('mousedown', handleGlobalTap);
-      window.removeEventListener('touchstart', handleGlobalTap);
     };
   }, [jump, gameOver]);
 
@@ -268,7 +257,6 @@ export const SkillRunner = () => {
   return (
     <div 
       className="flex flex-col items-center justify-center w-full max-w-4xl mx-auto p-4 md:p-8 bg-card rounded-3xl border border-border/50 shadow-xl relative overflow-hidden select-none touch-none"
-      onPointerDown={jump}
     >
       {/* Top Notification (Slides in from top without breaking layout) */}
       <div 
@@ -313,7 +301,13 @@ export const SkillRunner = () => {
       </div>
 
       {/* Game Canvas Container */}
-      <div className="relative w-full max-w-[800px] aspect-[21/9] bg-background border-2 border-border/50 rounded-xl overflow-hidden shadow-inner">
+      <div 
+        className="relative w-full max-w-[800px] aspect-[4/3] md:aspect-[21/9] bg-background border-2 border-border/50 rounded-xl overflow-hidden shadow-inner cursor-pointer"
+        onPointerDown={(e) => {
+          if ((e.target as HTMLElement).closest('button')) return;
+          jump();
+        }}
+      >
         <canvas 
           ref={canvasRef}
           width={800}
