@@ -256,7 +256,7 @@ export const SkillRunner = () => {
 
   return (
     <div 
-      className="flex flex-col items-center justify-center w-full max-w-4xl mx-auto p-4 md:p-8 bg-card rounded-3xl border border-border/50 shadow-xl relative overflow-hidden select-none touch-none"
+      className="flex flex-col items-center justify-center w-full max-w-4xl mx-auto p-4 md:p-8 bg-card rounded-3xl border border-border/50 shadow-xl relative overflow-hidden select-none"
     >
       {/* Top Notification (Slides in from top without breaking layout) */}
       <div 
@@ -303,7 +303,7 @@ export const SkillRunner = () => {
       {/* Game Canvas Container */}
       <div 
         className="relative w-full max-w-[800px] aspect-[4/3] md:aspect-[21/9] bg-background border-2 border-border/50 rounded-xl overflow-hidden shadow-inner cursor-pointer"
-        onPointerDown={(e) => {
+        onClick={(e) => {
           if ((e.target as HTMLElement).closest('button')) return;
           jump();
         }}
@@ -312,7 +312,7 @@ export const SkillRunner = () => {
           ref={canvasRef}
           width={800}
           height={340}
-          className="w-full h-full block touch-none"
+          className="w-full h-full block"
         />
 
         {/* Start Overlay */}
