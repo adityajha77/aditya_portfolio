@@ -79,23 +79,23 @@ const Index = () => {
       {/* Top Bar */}
       <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between p-6 bg-background/80 backdrop-blur-md border-b border-border/50">
         <div className="font-bold text-xl tracking-tight">Aditya Jha</div>
-        <div className="flex items-center gap-4">
-          <a href="https://x.com/aditya__jha7" target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-foreground transition-colors p-2 hover:bg-muted/50 rounded-lg">
+        <div className="flex items-center gap-1 sm:gap-2">
+          <a href="https://x.com/aditya__jha7" target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-foreground transition-colors p-2 hover:bg-muted/50 rounded-lg" title="X">
             <svg viewBox="0 0 24 24" aria-hidden="true" className="h-5 w-5 fill-current"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 22.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
           </a>
-          <a href="https://github.com/adityajha7" target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-violet-400 transition-colors hidden sm:block" title="GitHub">
+          <a href="https://github.com/adityajha7" target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-violet-400 transition-colors p-2 hover:bg-muted/50 rounded-lg" title="GitHub">
             <Github className="h-5 w-5" />
           </a>
-          <a href="https://codeforces.com/profile/adityajha7" target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-orange-400 transition-colors hidden sm:block" title="Codeforces">
+          <a href="https://codeforces.com/profile/adityajha7" target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-orange-400 transition-colors p-2 hover:bg-muted/50 rounded-lg" title="Codeforces">
             <Code className="h-5 w-5" />
           </a>
-          <a href="https://leetcode.com/u/adityajha7/" target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-amber-400 transition-colors hidden sm:block" title="LeetCode">
+          <a href="https://leetcode.com/u/adityajha7/" target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-amber-400 transition-colors p-2 hover:bg-muted/50 rounded-lg" title="LeetCode">
             <LeetCodeIcon className="h-5 w-5" />
           </a>
-          <a href="https://www.linkedin.com/in/aditya-kumar-jha-72493a319" target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-blue-400 transition-colors hidden sm:block" title="LinkedIn">
+          <a href="https://www.linkedin.com/in/aditya-kumar-jha-72493a319" target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-blue-400 transition-colors p-2 hover:bg-muted/50 rounded-lg" title="LinkedIn">
             <Linkedin className="h-5 w-5" />
           </a>
-          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=adityakartikey1259@gmail.com" target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-rose-400 transition-colors hidden sm:block" title="Email">
+          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=adityakartikey1259@gmail.com" target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-rose-400 transition-colors p-2 hover:bg-muted/50 rounded-lg" title="Email">
             <Mail className="h-5 w-5" />
           </a>
         </div>
@@ -106,7 +106,7 @@ const Index = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 auto-rows-[minmax(180px,auto)]">
           
           {/* Hero Row — Card left, Profile pic right (outside card) */}
-          <div className="md:col-span-2 lg:col-span-4 row-span-2 flex flex-col lg:flex-row gap-8 items-center">
+          <div className="md:col-span-2 lg:col-span-4 row-span-2 flex flex-col-reverse lg:flex-row gap-8 items-center">
 
             {/* Left: BentoCard with bio + skills */}
             <BentoCard className="flex-1 flex flex-col justify-center p-8 h-full" delay={0.1}>
