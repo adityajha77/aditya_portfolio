@@ -256,32 +256,34 @@ export const SkillRunner = () => {
 
   return (
     <div 
-      className="flex flex-col items-center justify-center w-full max-w-4xl mx-auto p-4 md:p-8 bg-card rounded-3xl border border-border/50 shadow-xl relative overflow-hidden select-none"
+      className="flex flex-col items-center justify-center w-full h-full relative overflow-hidden select-none"
     >
       {/* Top Notification (Slides in from top without breaking layout) */}
       <div 
-        className={`absolute top-0 left-0 w-full flex justify-center pt-4 transition-all duration-500 z-50 ${
+        className={`absolute top-0 left-0 w-full flex justify-center pt-2 transition-all duration-500 z-50 ${
           notification ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'
         }`}
       >
-        <div className="bg-primary text-primary-foreground px-6 py-2 rounded-full font-bold shadow-lg">
+        <div className="bg-primary text-primary-foreground px-4 py-1.5 rounded-full text-xs font-bold shadow-lg">
           {notification}
         </div>
       </div>
 
       {/* Header Info */}
-      <div className="w-full flex justify-between items-center mb-6 px-2">
-        <div className="flex flex-col md:flex-row md:items-center gap-2 pointer-events-none">
-          <Gamepad2 className="h-6 w-6 text-primary hidden md:block" />
-          <h2 className="text-xl font-bold">Skill Runner</h2>
+      <div className="w-full flex justify-between items-center mb-4 px-1">
+        <div className="flex flex-col sm:flex-row sm:items-center gap-1.5 pointer-events-none">
+          <div className="flex items-center gap-1.5">
+            <Gamepad2 className="h-5 w-5 text-primary" />
+            <h2 className="text-base font-bold">Skill Runner</h2>
+          </div>
           {!gameOver && hasStarted && (
-            <div className="md:ml-4 flex items-center text-sm">
-              <span className="text-muted-foreground mr-2">Target:</span>
-              <div className="flex gap-1">
+            <div className="sm:ml-3 flex items-center text-xs">
+              <span className="text-muted-foreground mr-1.5 text-[10px] uppercase">Target:</span>
+              <div className="flex gap-0.5">
                 {currentSkill.split('').map((char, idx) => (
                   <span 
                     key={idx} 
-                    className={`font-mono text-lg font-bold ${
+                    className={`font-mono text-sm font-bold ${
                       idx < currentLetterIndex ? 'text-primary' : 
                       idx === currentLetterIndex ? 'text-green-500 animate-pulse underline' : 
                       'text-muted-foreground/30'
@@ -295,14 +297,14 @@ export const SkillRunner = () => {
           )}
         </div>
         <div className="flex flex-col items-end pointer-events-none">
-          <span className="text-xs text-muted-foreground uppercase tracking-wider">Score</span>
-          <span className="text-2xl font-bold text-primary">{score}</span>
+          <span className="text-[9px] text-muted-foreground uppercase tracking-wider">Score</span>
+          <span className="text-lg font-bold text-primary leading-none">{score}</span>
         </div>
       </div>
 
       {/* Game Canvas Container */}
       <div 
-        className="relative w-full max-w-[800px] aspect-[800/340] bg-background border-2 border-border/50 rounded-xl overflow-hidden shadow-inner cursor-pointer"
+        className="relative w-full max-w-[800px] aspect-[800/340] bg-background border border-border/50 rounded-xl overflow-hidden shadow-inner cursor-pointer touch-none"
         onClick={(e) => {
           if ((e.target as HTMLElement).closest('button')) return;
           jump();
@@ -317,11 +319,11 @@ export const SkillRunner = () => {
 
         {/* Start Overlay */}
         {!hasStarted && !gameOver && (
-          <div className="absolute inset-0 bg-background/80 backdrop-blur-sm flex flex-col items-center justify-center p-6 text-center z-20 pointer-events-none">
-            <Gamepad2 className="h-12 w-12 text-primary mb-4" />
-            <h3 className="text-2xl font-bold mb-2">Ready to Run?</h3>
-            <p className="text-sm text-muted-foreground mb-6">Tap the screen, Spacebar, or W/ArrowUp to jump.</p>
-            <Button onClick={(e) => { e.stopPropagation(); startGame(); }} className="rounded-full px-8 h-12 pointer-events-auto">
+          <div className="absolute inset-0 bg-background/80 backdrop-blur-sm flex flex-col items-center justify-center p-3 text-center z-20 pointer-events-none">
+            <Gamepad2 className="h-6 w-6 sm:h-10 sm:w-10 text-primary mb-1.5 sm:mb-3 hidden xs:block" />
+            <h3 className="text-sm sm:text-xl font-bold mb-0.5 sm:mb-1">Ready to Run?</h3>
+            <p className="text-[10px] sm:text-xs text-muted-foreground mb-2 sm:mb-4 max-w-[280px]">Tap the screen, Space, or Up/W to jump.</p>
+            <Button onClick={(e) => { e.stopPropagation(); startGame(); }} className="rounded-full px-5 sm:px-8 h-8 sm:h-10 text-xs sm:text-sm pointer-events-auto">
               Start Game
             </Button>
           </div>
@@ -329,28 +331,28 @@ export const SkillRunner = () => {
 
         {/* Game Over Overlay */}
         {gameOver && (
-          <div className="absolute inset-0 bg-background/90 backdrop-blur-md flex flex-col items-center justify-center p-4 md:p-6 text-center animate-in fade-in zoom-in duration-300 z-20 pointer-events-none">
-            <Trophy className="h-10 w-10 md:h-16 md:w-16 text-yellow-500 mb-2 md:mb-4" />
-            <h3 className="text-2xl md:text-3xl font-bold mb-1">Game Over</h3>
-            <p className="text-xs md:text-sm text-muted-foreground mb-3 md:mb-4">You mastered {collectedSkills.length} full skills!</p>
+          <div className="absolute inset-0 bg-background/90 backdrop-blur-md flex flex-col items-center justify-center p-3 text-center animate-in fade-in zoom-in duration-300 z-20 pointer-events-none">
+            <Trophy className="h-6 w-6 sm:h-10 sm:w-10 text-yellow-500 mb-1 sm:mb-3 hidden xs:block" />
+            <h3 className="text-sm sm:text-2xl font-bold mb-0.5 sm:mb-1">Game Over</h3>
+            <p className="text-[10px] sm:text-xs text-muted-foreground mb-1.5 sm:mb-3">You mastered {collectedSkills.length} skills!</p>
             
-            <div className="flex flex-wrap justify-center gap-1.5 md:gap-2 mb-4 md:mb-6 max-w-[350px]">
-              {collectedSkills.slice(-6).map((s, i) => (
-                <span key={i} className="text-[10px] md:text-sm bg-primary/20 text-primary px-2 py-0.5 md:px-3 md:py-1 rounded-full font-bold">{s}</span>
+            <div className="flex flex-wrap justify-center gap-1 mb-2 sm:mb-4 max-w-[280px]">
+              {collectedSkills.slice(-4).map((s, i) => (
+                <span key={i} className="text-[8px] sm:text-xs bg-primary/20 text-primary px-1.5 py-0.5 sm:px-2 sm:py-0.5 rounded-full font-bold">{s}</span>
               ))}
-              {collectedSkills.length > 6 && <span className="text-[10px] md:text-sm text-muted-foreground self-center">+{collectedSkills.length - 6} more</span>}
+              {collectedSkills.length > 4 && <span className="text-[8px] sm:text-xs text-muted-foreground self-center">+{collectedSkills.length - 4}</span>}
             </div>
 
-            <Button onClick={(e) => { e.stopPropagation(); startGame(); }} className="rounded-full gap-2 px-6 md:px-8 h-10 md:h-12 pointer-events-auto">
-              <RotateCcw className="h-4 w-4" /> Try Again
+            <Button onClick={(e) => { e.stopPropagation(); startGame(); }} className="rounded-full gap-1.5 px-5 sm:px-6 h-8 sm:h-10 text-xs sm:text-sm pointer-events-auto">
+              <RotateCcw className="h-3 w-3 sm:h-3.5 sm:w-3.5" /> Try Again
             </Button>
           </div>
         )}
       </div>
 
       {/* Instructions below the game area for clarity */}
-      <p className="mt-4 text-xs text-muted-foreground text-center pointer-events-none">
-        Tap the screen or press Space to jump over the red obstacles and collect the green letters!
+      <p className="mt-3 text-[10px] text-muted-foreground text-center pointer-events-none">
+        Tap canvas or press Space to jump over obstacles and collect green letters!
       </p>
 
     </div>

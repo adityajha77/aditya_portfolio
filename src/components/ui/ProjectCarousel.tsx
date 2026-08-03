@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import { ArrowLeft, ArrowRight, ExternalLink, Github, LayoutGrid, ArrowUpRight } from 'lucide-react';
 import { Button } from './button';
@@ -77,6 +77,7 @@ export const ProjectCarousel = () => {
   });
   const [canScrollPrev, setCanScrollPrev] = useState(false);
   const [canScrollNext, setCanScrollNext] = useState(true);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   const scrollPrev = useCallback(() => {
     if (emblaApi) emblaApi.scrollPrev();
@@ -99,14 +100,47 @@ export const ProjectCarousel = () => {
     emblaApi.on('reInit', onSelect);
   }, [emblaApi, onSelect]);
 
+  // Smooth horizontal and vertical wheel scrolling
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el || !emblaApi) return;
+    let lastTime = 0;
+    const onWheel = (e: WheelEvent) => {
+      // Determine dominant scroll direction
+      const isHorizontal = Math.abs(e.deltaX) > Math.abs(e.deltaY);
+      const delta = isHorizontal ? e.deltaX : e.deltaY;
+      
+      // Ignore tiny unintentional scrolls
+      if (Math.abs(delta) < 5) return;
+      
+      const now = Date.now();
+      
+      // Allow scrolling smoothly but prevent page jump
+      if (now - lastTime < 150) {
+        e.preventDefault();
+        return;
+      }
+      
+      e.preventDefault();
+      lastTime = now;
+      if (delta > 0) {
+        emblaApi.scrollNext();
+      } else {
+        emblaApi.scrollPrev();
+      }
+    };
+    el.addEventListener('wheel', onWheel, { passive: false });
+    return () => el.removeEventListener('wheel', onWheel);
+  }, [emblaApi]);
+
   const ProjectCard = ({ project }: { project: Project }) => (
-    <div className="relative flex-[0_0_85%] md:flex-[0_0_45%] lg:flex-[0_0_31%] min-w-0 h-[280px] rounded-2xl overflow-hidden border border-border/50 group bg-card">
+    <div className="relative flex-[0_0_85%] md:flex-[0_0_45%] lg:flex-[0_0_31%] min-w-0 h-[280px] rounded-2xl overflow-hidden border border-border/50 group bg-card [will-change:transform]">
       {/* Image Container */}
       <div className="absolute inset-0 h-full w-full">
         <img
           src={project.image}
           alt={project.title}
-          className={`w-full h-full transition-transform duration-700 group-hover:scale-105 ${project.containImage ? 'object-contain p-4 bg-muted/30' : 'object-cover object-top'}`}
+          className={`w-full h-full transition-transform duration-700 group-hover:scale-105 [will-change:transform] ${project.containImage ? 'object-contain p-4 bg-muted/30' : 'object-cover object-top'}`}
         />
       </div>
       <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/60 to-transparent/10 pointer-events-none" />
@@ -143,9 +177,9 @@ export const ProjectCarousel = () => {
   );
 
   return (
-    <div className="relative w-full h-full flex flex-col">
+    <div className="relative w-full h-full flex flex-col" ref={containerRef}>
       <div className="flex justify-between items-center mb-4 px-1">
-        <h3 className="text-sm font-medium text-muted-foreground uppercase tracking-wider">Featured Projects</h3>
+        <h3 className="text-sm font-bold bg-gradient-to-r from-sky-400 to-cyan-400 bg-clip-text text-transparent uppercase tracking-wider">Featured Projects</h3>
 
         <div className="flex items-center gap-2">
           <Dialog>
@@ -154,13 +188,21 @@ export const ProjectCarousel = () => {
                 <LayoutGrid className="h-3 w-3" /> View All
               </Button>
             </DialogTrigger>
-            <DialogContent className="max-w-4xl max-h-[85vh] overflow-y-auto border-border/50 bg-background/95 backdrop-blur-lg">
-              <DialogHeader>
-                <DialogTitle className="text-3xl font-bold mb-6">All Projects</DialogTitle>
-              </DialogHeader>
-              <div className="flex flex-col gap-6">
-                {projects.map((project, index) => (
-                  <div key={index} className="flex flex-col md:flex-row gap-6 bg-card border border-border/50 rounded-2xl overflow-hidden group p-4 hover:border-border transition-colors">
+            <DialogContent className="max-w-4xl h-[85vh] p-0 overflow-hidden flex flex-col border-border/50 bg-background/95 backdrop-blur-lg [&>button]:hidden">
+              <div className="px-6 py-4 border-b border-border/50 shrink-0 flex items-center justify-between bg-background/95 z-10">
+                <DialogHeader>
+                  <DialogTitle className="text-2xl md:text-3xl font-bold">All Projects</DialogTitle>
+                </DialogHeader>
+                <DialogClose asChild>
+                  <Button variant="outline" className="rounded-full gap-2 border-border/50 hidden sm:flex">
+                    <ArrowLeft className="w-4 h-4" /> Go Back
+                  </Button>
+                </DialogClose>
+              </div>
+              <div className="flex-1 overflow-y-auto p-6 relative">
+                <div className="flex flex-col gap-6">
+                  {projects.map((project, index) => (
+                    <div key={index} className="flex flex-col md:flex-row gap-6 bg-card border border-border/50 rounded-2xl overflow-hidden group p-4 hover:border-border transition-colors">
                     <div className="w-full md:w-2/5 h-56 rounded-xl overflow-hidden shrink-0 bg-muted/20">
                       <img
                         src={project.image}
@@ -211,6 +253,7 @@ export const ProjectCarousel = () => {
                     Close
                   </Button>
                 </DialogClose>
+                </div>
               </div>
             </DialogContent>
           </Dialog>

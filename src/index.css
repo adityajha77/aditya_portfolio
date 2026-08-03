@@ -57,9 +57,14 @@
   * {
     @apply border-border;
   }
+  html {
+    scroll-behavior: smooth;
+  }
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
   
   /* Custom scrollbar for better aesthetic */
@@ -91,19 +96,100 @@
   }
 }
 
-@keyframes float-1 {
-  0%, 100% { transform: translateY(0) scale(1); }
-  50% { transform: translateY(-20px) scale(1.05); }
+/* ── Ambient orb animations ── */
+@keyframes orb-1 {
+  0%, 100% { transform: translate3d(0,   0,   0) scale(1);    opacity: 0.7; }
+  33%       { transform: translate3d(40px, -30px, 0) scale(1.08); opacity: 1;   }
+  66%       { transform: translate3d(-20px, 20px, 0) scale(0.95); opacity: 0.8; }
 }
-@keyframes float-2 {
-  0%, 100% { transform: translateY(0) scale(1); }
-  50% { transform: translateY(20px) scale(0.95); }
+@keyframes orb-2 {
+  0%, 100% { transform: translate3d(0,   0,   0) scale(1);    opacity: 0.6; }
+  40%       { transform: translate3d(-50px, 30px, 0) scale(1.1);  opacity: 0.9; }
+  70%       { transform: translate3d(30px, -20px, 0) scale(0.92); opacity: 0.7; }
 }
-@keyframes float-3 {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(-20px, 20px) scale(1.1); }
+@keyframes orb-3 {
+  0%, 100% { transform: translate3d(0,   0,   0) scale(1);    opacity: 0.5; }
+  50%       { transform: translate3d(-35px, -40px, 0) scale(1.12); opacity: 0.85;}
+}
+@keyframes orb-4 {
+  0%, 100% { transform: translate3d(0,  0,  0) scale(1);    opacity: 0.5; }
+  45%       { transform: translate3d(30px, -25px, 0) scale(1.06); opacity: 0.8; }
+}
+@keyframes orb-5 {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1);    opacity: 0.45; }
+  55%       { transform: translate3d(-20px, 35px, 0) scale(1.1);  opacity: 0.75; }
 }
 
-.animate-float-1 { animation: float-1 8s ease-in-out infinite; }
-.animate-float-2 { animation: float-2 10s ease-in-out infinite; }
-.animate-float-3 { animation: float-3 12s ease-in-out infinite; }
+.animate-orb-1 { animation: orb-1 18s ease-in-out infinite; will-change: transform; }
+.animate-orb-2 { animation: orb-2 22s ease-in-out infinite; will-change: transform; }
+.animate-orb-3 { animation: orb-3 16s ease-in-out infinite; will-change: transform; }
+.animate-orb-4 { animation: orb-4 20s ease-in-out infinite; will-change: transform; }
+.animate-orb-5 { animation: orb-5 14s ease-in-out infinite; will-change: transform; }
+
+/* ── Light beam sweep animations ── */
+@keyframes beam-1 {
+  0%   { opacity: 0;    transform: rotate(35deg) translateY(-8%);  }
+  20%  { opacity: 1; }
+  80%  { opacity: 1; }
+  100% { opacity: 0;    transform: rotate(35deg) translateY(8%);   }
+}
+@keyframes beam-2 {
+  0%   { opacity: 0;    transform: rotate(-28deg) translateY(10%); }
+  25%  { opacity: 0.85; }
+  75%  { opacity: 0.85; }
+  100% { opacity: 0;    transform: rotate(-28deg) translateY(-10%);}
+}
+@keyframes beam-3 {
+  0%, 100% { opacity: 0; }
+  40%, 60%  { opacity: 1; }
+}
+
+.animate-beam-1 { animation: beam-1 14s ease-in-out infinite; }
+.animate-beam-2 { animation: beam-2 18s ease-in-out infinite 4s; }
+.animate-beam-3 { animation: beam-3 22s ease-in-out infinite 8s; }
+
+/* ── Particle twinkle ── */
+@keyframes particle-twinkle {
+  0%, 100% { opacity: 0;    transform: scale(0.8); }
+  50%       { opacity: 1;   transform: scale(1.4); }
+}
+.animate-particle {
+  animation: particle-twinkle var(--dur, 5s) ease-in-out infinite;
+  will-change: opacity, transform;
+}
+
+/* ── Classy Sweeping & Floating Lights ── */
+@keyframes sweep {
+  0% { transform: translateX(-150%) skewX(-15deg); }
+  100% { transform: translateX(250%) skewX(-15deg); }
+}
+@keyframes sweep-reverse {
+  0% { transform: translateX(250%) skewX(15deg); }
+  100% { transform: translateX(-150%) skewX(15deg); }
+}
+
+@keyframes float-light {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.6; }
+  50% { transform: translate(15%, 15%) scale(1.1); opacity: 1; }
+}
+@keyframes float-light-alt {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.6; }
+  50% { transform: translate(-15%, -15%) scale(1.1); opacity: 1; }
+}
+
+.animate-sweep-1 {
+  animation: sweep 12s ease-in-out infinite;
+  will-change: transform;
+}
+.animate-sweep-2 {
+  animation: sweep-reverse 16s ease-in-out infinite 4s;
+  will-change: transform;
+}
+.animate-float-light {
+  animation: float-light 10s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+.animate-float-light-alt {
+  animation: float-light-alt 12s ease-in-out infinite 2s;
+  will-change: transform, opacity;
+}
