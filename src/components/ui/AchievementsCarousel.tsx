@@ -25,7 +25,7 @@ const achievements: Achievement[] = [
   {
     title: 'HPE HACKATHON',
     subtitle: '1st Prize Winner',
-    image: '/resources/hpe_first.jpg',
+    image: '/resources/hpe_first.webp',
     link: 'https://www.linkedin.com/posts/aditya-kumar-jha-72493a319_nmamit-nitte-proudmoment-activity-7442479576330477568-iE8l?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFDDNowB6OgYvlBgBdJHr4fUwfbOLWhgEpY',
     description: 'Won 1st place in the Hewlett Packard Enterprise (HPE) Hackathon, building a scalable real-time emergency responder routing engine under 24 hours.',
     badge: 'First Prize',
@@ -43,7 +43,7 @@ const achievements: Achievement[] = [
   {
     title: 'Superteam 100xdevs',
     subtitle: 'Bounty Winner',
-    image: '/resources/bounty.jpg',
+    image: '/resources/bounty.webp',
     link: 'https://superteam.fun/earn/t/tysondrake',
     description: 'Awarded bounty winner by Superteam and 100xdevs for building a performance-optimized Web3 analytics dashboard on Solana.',
     badge: 'Bounty Winner',
@@ -144,6 +144,8 @@ export const AchievementsCarousel = () => {
         <img
           src={achievement.image}
           alt={achievement.title}
+          loading="lazy"
+          decoding="async"
           className={`w-full h-full transition-transform duration-700 group-hover:scale-103 ${
             achievement.containImage ? 'object-contain p-3' : 'object-cover object-center'
           }`}

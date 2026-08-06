@@ -8,27 +8,27 @@ export const AnimatedBackground = () => {
 
       {/* ── Ambient colour orbs ── */}
       {/* Top-left warm white glow */}
-      <div className="absolute top-[-15%] left-[-10%] w-[55%] h-[55%] rounded-full bg-white/[0.04] blur-[140px] animate-orb-1" />
+      <div className="absolute top-[-15%] left-[-10%] w-[55%] h-[55%] rounded-full bg-white/[0.04] blur-[60px] md:blur-[140px] animate-orb-1 transform-gpu" />
       {/* Bottom-right cold blue-white glow */}
-      <div className="absolute bottom-[-20%] right-[-15%] w-[60%] h-[60%] rounded-full bg-indigo-400/[0.06] blur-[160px] animate-orb-2" />
+      <div className="absolute bottom-[-20%] right-[-15%] w-[60%] h-[60%] rounded-full bg-indigo-400/[0.06] blur-[60px] md:blur-[160px] animate-orb-2 transform-gpu" />
       {/* Centre-right subtle violet tint */}
-      <div className="absolute top-[35%] right-[10%] w-[35%] h-[45%] rounded-full bg-violet-500/[0.05] blur-[120px] animate-orb-3" />
+      <div className="absolute top-[35%] right-[10%] w-[35%] h-[45%] rounded-full bg-violet-500/[0.05] blur-[50px] md:blur-[120px] animate-orb-3 transform-gpu" />
       {/* Bottom-left accent */}
-      <div className="absolute bottom-[5%] left-[5%] w-[30%] h-[35%] rounded-full bg-sky-400/[0.04] blur-[110px] animate-orb-4" />
+      <div className="absolute bottom-[5%] left-[5%] w-[30%] h-[35%] rounded-full bg-sky-400/[0.04] blur-[50px] md:blur-[110px] animate-orb-4 transform-gpu" />
       {/* Top-right cool cyan */}
-      <div className="absolute top-[0%] right-[20%] w-[25%] h-[30%] rounded-full bg-cyan-300/[0.03] blur-[100px] animate-orb-5" />
+      <div className="absolute top-[0%] right-[20%] w-[25%] h-[30%] rounded-full bg-cyan-300/[0.03] blur-[40px] md:blur-[100px] animate-orb-5 transform-gpu" />
 
       {/* ── Prominent Glowing Background Lights ── */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* Large sweeping gradients */}
-        <div className="absolute -top-[50%] left-0 w-[40%] h-[200%] bg-gradient-to-r from-transparent via-white/[0.03] to-transparent animate-sweep-1 blur-[80px]" />
-        <div className="absolute -top-[50%] left-0 w-[30%] h-[200%] bg-gradient-to-r from-transparent via-indigo-400/[0.03] to-transparent animate-sweep-2 blur-[80px]" />
+        {/* Large sweeping gradients — enabled on md+ to prevent mobile GPU thermal throttling */}
+        <div className="hidden md:block absolute -top-[50%] left-0 w-[40%] h-[200%] bg-gradient-to-r from-transparent via-white/[0.03] to-transparent animate-sweep-1 blur-[80px] transform-gpu" />
+        <div className="hidden md:block absolute -top-[50%] left-0 w-[30%] h-[200%] bg-gradient-to-r from-transparent via-indigo-400/[0.03] to-transparent animate-sweep-2 blur-[80px] transform-gpu" />
         
         {/* Floating glowing orbs */}
-        <div className="absolute top-[10%] left-[20%] w-72 h-72 bg-violet-500/20 rounded-full blur-[80px] animate-float-light mix-blend-screen" />
-        <div className="absolute bottom-[10%] right-[20%] w-80 h-80 bg-cyan-400/20 rounded-full blur-[90px] animate-float-light-alt mix-blend-screen" />
-        <div className="absolute top-[40%] left-[60%] w-64 h-64 bg-fuchsia-500/15 rounded-full blur-[70px] animate-float-light mix-blend-screen" style={{ animationDelay: '2s' }} />
-        <div className="absolute bottom-[30%] left-[10%] w-56 h-56 bg-primary/15 rounded-full blur-[60px] animate-float-light-alt mix-blend-screen" style={{ animationDelay: '4s' }} />
+        <div className="hidden sm:block absolute top-[10%] left-[20%] w-72 h-72 bg-violet-500/20 rounded-full blur-[50px] md:blur-[80px] animate-float-light mix-blend-screen transform-gpu" />
+        <div className="hidden sm:block absolute bottom-[10%] right-[20%] w-80 h-80 bg-cyan-400/20 rounded-full blur-[50px] md:blur-[90px] animate-float-light-alt mix-blend-screen transform-gpu" />
+        <div className="hidden md:block absolute top-[40%] left-[60%] w-64 h-64 bg-fuchsia-500/15 rounded-full blur-[70px] animate-float-light mix-blend-screen transform-gpu" style={{ animationDelay: '2s' }} />
+        <div className="hidden md:block absolute bottom-[30%] left-[10%] w-56 h-56 bg-primary/15 rounded-full blur-[60px] animate-float-light-alt mix-blend-screen transform-gpu" style={{ animationDelay: '4s' }} />
       </div>
 
       {/* ── Shooting light beams (thin diagonal streaks) ── */}

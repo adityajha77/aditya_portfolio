@@ -181,8 +181,9 @@ const Index = () => {
             >
               <div className="relative w-60 h-60 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-[2rem] border border-border/40 bg-card/30 backdrop-blur-md overflow-hidden">
                 <img
-                  src="/resources/aditya.png"
+                  src="/resources/aditya.webp"
                   alt="Aditya Jha"
+                  decoding="async"
                   className="w-full h-full object-cover object-[center_25%] scale-[0.95]"
                 />
               </div>

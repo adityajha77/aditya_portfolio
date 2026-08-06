@@ -24,7 +24,7 @@ const projects: Project[] = [
   {
     title: 'Code Arena',
     description: 'Competitive coding platform built for scale. Enables users to practice algorithms, participate in contests, and view real-time leaderboards.',
-    image: '/resources/codearena.png',
+    image: '/resources/codearena.webp',
     link: 'https://codearena-nine-xi.vercel.app/',
     github: 'https://github.com/adityajha77/codearena',
     containImage: true
@@ -32,21 +32,21 @@ const projects: Project[] = [
   {
     title: 'Book Chefs',
     description: 'Culinary recipe sharing network allowing food enthusiasts to explore, share, and save their favorite dishes with a modern UI.',
-    image: '/resources/chefbook.png',
+    image: '/resources/chefbook.webp',
     link: 'https://chefbook-teal.vercel.app/',
     github: 'https://github.com/adityajha77/CHEFBOOK'
   },
   {
     title: 'Tokenized Estate',
     description: 'Real estate tokenization platform leveraging blockchain to fractionally divide high-value property assets for retail investors.',
-    image: '/resources/tokenestate.png',
+    image: '/resources/tokenestate.webp',
     link: 'https://property-collesium.vercel.app/',
     github: 'https://github.com/adityajha77/property_collesium'
   },
   {
     title: 'Nebula',
     description: 'Web3 ecosystem and portfolio tracker, providing deep insights into wallet activity, DeFi positions, and cross-chain balances.',
-    image: '/resources/nebula.png',
+    image: '/resources/nebula.webp',
     link: 'https://nebula-web-wallet.vercel.app/',
     github: 'https://github.com/adityajha77/nebula_web_wallet',
     containImage: true
@@ -54,7 +54,7 @@ const projects: Project[] = [
   {
     title: 'Stake Earn',
     description: 'DeFi staking platform designed with high-yield smart contracts, allowing users to earn passive income by locking crypto assets.',
-    image: '/resources/stakeFlow.png',
+    image: '/resources/stakeFlow.webp',
     link: 'https://stake-rewards.vercel.app/',
     github: 'https://github.com/adityajha77/stake_rewards',
     containImage: true
@@ -62,7 +62,7 @@ const projects: Project[] = [
   {
     title: 'Track Bharat',
     description: 'Logistics tracking interface providing real-time shipment updates, interactive maps, and detailed delivery analytics.',
-    image: '/resources/trackbharat.png',
+    image: '/resources/trackbharat.webp',
     link: 'https://track-bharat-1.vercel.app/',
     github: 'https://github.com/adityajha77/TrackBharat'
   }
@@ -140,6 +140,8 @@ export const ProjectCarousel = () => {
         <img
           src={project.image}
           alt={project.title}
+          loading="lazy"
+          decoding="async"
           className={`w-full h-full transition-transform duration-700 group-hover:scale-105 [will-change:transform] ${project.containImage ? 'object-contain p-4 bg-muted/30' : 'object-cover object-top'}`}
         />
       </div>
