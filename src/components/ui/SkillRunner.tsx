@@ -3,7 +3,7 @@ import { Trophy, RotateCcw, Gamepad2 } from 'lucide-react';
 import { Button } from './button';
 
 const SKILLS = [
-  'REACT', 'NEXT.JS', 'TYPESCRIPT', 'TAILWIND', 
+  'REACT', 'NEXT.JS', 'TYPESCRIPT', 'HONO.JS', 'TAILWIND', 
   'NODE.JS', 'MONGODB', 'RUST', 'C++', 
   'SOLANA', 'WEB3', 'DOCKER', 'MOBILE'
 ];

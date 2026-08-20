@@ -59,6 +59,7 @@ const Index = () => {
   const skills = [
     { name: 'C++',          icon: Code2,      color: 'bg-blue-500/20 text-blue-300 border-blue-500/20 hover:bg-blue-500/30' },
     { name: 'Rust',         icon: Terminal,   color: 'bg-orange-500/20 text-orange-300 border-orange-500/20 hover:bg-orange-500/30' },
+    { name: 'Hono.js',      icon: Globe,      color: 'bg-amber-600/20 text-amber-400 border-amber-600/20 hover:bg-amber-600/30' },
     { name: 'Solana',       icon: Database,   color: 'bg-violet-500/20 text-violet-300 border-violet-500/20 hover:bg-violet-500/30' },
     { name: 'Web3',         icon: Database,   color: 'bg-cyan-500/20 text-cyan-300 border-cyan-500/20 hover:bg-cyan-500/30' },
     { name: 'React',        icon: Layout,     color: 'bg-sky-500/20 text-sky-300 border-sky-500/20 hover:bg-sky-500/30' },
@@ -207,16 +208,13 @@ const Index = () => {
 
           {/* Open Source Card */}
           <BentoCard className="md:col-span-2 lg:col-span-2 row-span-2 flex flex-col justify-between group relative overflow-hidden" delay={0.6}>
-            
-
-
             <div className="flex justify-between items-start z-10 shrink-0">
               <div className="flex items-center gap-2">
                 <GitPullRequest className="h-5 w-5 text-emerald-400" />
                 <h3 className="text-sm font-medium text-emerald-400 uppercase tracking-wider">Open Source</h3>
               </div>
               <a 
-                href="https://github.com/n8n-io/n8n/pull/33507" 
+                href="https://github.com/honojs/hono/pull/5227" 
                 target="_blank" 
                 rel="noreferrer"
                 className="text-muted-foreground hover:text-foreground transition-colors"
@@ -245,7 +243,7 @@ const Index = () => {
                     className="stroke-primary"
                     strokeWidth="5"
                     strokeDasharray={2 * Math.PI * 40}
-                    strokeDashoffset={2 * Math.PI * 40 * (1 - 18 / 30)}
+                    strokeDashoffset={2 * Math.PI * 40 * (1 - 0.92)}
                     strokeLinecap="round"
                     fill="transparent"
                     style={{
@@ -254,16 +252,20 @@ const Index = () => {
                   />
                 </svg>
                 <div className="absolute flex flex-col items-center justify-center text-center">
-                  <span className="text-3xl font-black text-primary leading-none">18</span>
+                  <span className="text-3xl font-black text-primary leading-none">30+</span>
                   <span className="text-[8px] text-muted-foreground font-bold uppercase tracking-wider mt-1">PRs Raised</span>
                 </div>
               </div>
 
               <div className="flex-1 flex flex-col justify-center gap-4">
                 <p className="text-base text-muted-foreground leading-relaxed text-center sm:text-left">
-                  Active open-source contributor to <strong className="text-rose-500 font-bold text-lg">n8n</strong> and <strong className="text-[#007ACC] font-bold text-lg">VS Code</strong>. Specialized in workflow node integrations, developer tooling enhancements, and interface optimizations.
+                  Active open-source contributor to <strong className="text-[#E36002] font-bold text-lg">Hono.js</strong> (Japan's biggest web framework), <strong className="text-rose-500 font-bold text-lg">n8n</strong>, and <strong className="text-[#007ACC] font-bold text-lg">VS Code</strong>. Specialized in web framework enhancements, workflow node integrations, and developer tooling.
                 </p>
-                <div className="flex items-center justify-center sm:justify-start gap-3">
+                <div className="flex items-center justify-center sm:justify-start gap-2 flex-wrap">
+                  <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#E36002]/10 border border-[#E36002]/20">
+                    <img src="https://avatars.githubusercontent.com/u/112678225?s=200&v=4" alt="Hono" className="w-5 h-5 rounded-sm" />
+                    <span className="text-xs font-bold text-[#E36002] tracking-wide">Hono.js</span>
+                  </div>
                   <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-rose-500/10 border border-rose-500/20">
                     <img src="https://avatars.githubusercontent.com/u/45487711?s=200&v=4" alt="n8n" className="w-5 h-5 rounded-sm" />
                     <span className="text-xs font-bold text-rose-500 tracking-wide">n8n</span>
@@ -278,17 +280,42 @@ const Index = () => {
 
             <div className="flex flex-col gap-2 z-10 shrink-0">
               <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider">Proof of Work</span>
-              <div 
-                className="p-3 bg-muted/40 border border-border/50 rounded-xl flex items-center justify-between cursor-pointer hover:border-primary/30 transition-colors"
-                onClick={() => window.open('https://github.com/n8n-io/n8n/pull/33507', '_blank')}
-              >
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                  <span className="text-xs font-mono font-medium text-foreground">n8n-io/n8n #33507</span>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                <div 
+                  className="p-2.5 bg-muted/40 border border-border/50 rounded-xl flex items-center justify-between cursor-pointer hover:border-[#E36002]/50 transition-colors group/pow"
+                  onClick={() => window.open('https://github.com/honojs/hono/pull/5227', '_blank')}
+                  title="Hono PR #5227"
+                >
+                  <div className="flex items-center gap-1.5 min-w-0">
+                    <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse shrink-0" />
+                    <span className="text-xs font-mono font-medium text-foreground truncate">hono #5227</span>
+                  </div>
+                  <ExternalLink className="h-3 w-3 text-muted-foreground group-hover/pow:text-[#E36002] shrink-0" />
                 </div>
-                <span className="text-xs text-primary font-semibold flex items-center gap-1">
-                  View PR <ExternalLink className="h-3 w-3" />
-                </span>
+
+                <div 
+                  className="p-2.5 bg-muted/40 border border-border/50 rounded-xl flex items-center justify-between cursor-pointer hover:border-[#E36002]/50 transition-colors group/pow"
+                  onClick={() => window.open('https://github.com/honojs/hono/pull/5264', '_blank')}
+                  title="Hono PR #5264"
+                >
+                  <div className="flex items-center gap-1.5 min-w-0">
+                    <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse shrink-0" />
+                    <span className="text-xs font-mono font-medium text-foreground truncate">hono #5264</span>
+                  </div>
+                  <ExternalLink className="h-3 w-3 text-muted-foreground group-hover/pow:text-[#E36002] shrink-0" />
+                </div>
+
+                <div 
+                  className="p-2.5 bg-muted/40 border border-border/50 rounded-xl flex items-center justify-between cursor-pointer hover:border-rose-500/50 transition-colors group/pow"
+                  onClick={() => window.open('https://github.com/n8n-io/n8n/pull/33507', '_blank')}
+                  title="n8n PR #33507"
+                >
+                  <div className="flex items-center gap-1.5 min-w-0">
+                    <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse shrink-0" />
+                    <span className="text-xs font-mono font-medium text-foreground truncate">n8n #33507</span>
+                  </div>
+                  <ExternalLink className="h-3 w-3 text-muted-foreground group-hover/pow:text-rose-400 shrink-0" />
+                </div>
               </div>
             </div>
           </BentoCard>
@@ -317,21 +344,21 @@ const Index = () => {
                     className="stroke-primary"
                     strokeWidth="5"
                     strokeDasharray={2 * Math.PI * 40}
-                    strokeDashoffset={2 * Math.PI * 40 * (1 - 0.82)}
+                    strokeDashoffset={2 * Math.PI * 40 * (1 - 0.88)}
                     strokeLinecap="round"
                     fill="transparent"
                     style={{ filter: 'drop-shadow(0px 0px 8px rgba(255,255,255,0.45))' }}
                   />
                 </svg>
                 <div className="absolute flex flex-col items-center justify-center text-center">
-                  <span className="text-3xl font-black text-primary leading-none">600+</span>
-                  <span className="text-[8px] text-muted-foreground font-bold uppercase tracking-wider mt-1">Solved</span>
+                  <span className="text-3xl font-black text-primary leading-none">700+</span>
+                  <span className="text-[8px] text-muted-foreground font-bold uppercase tracking-wider mt-1">Questions</span>
                 </div>
               </div>
 
               <div className="flex-1 flex flex-col justify-center">
                 <p className="text-sm text-muted-foreground leading-relaxed text-center sm:text-left mb-3">
-                  Solved <strong className="text-foreground font-semibold">600+ problems</strong> across LeetCode, Codeforces and other platforms — covering arrays, graphs, DP, trees & more.
+                  Solved <strong className="text-foreground font-semibold">700+ questions</strong> across LeetCode, Codeforces and other platforms — covering arrays, graphs, DP, trees & more.
                 </p>
                 <div className="flex flex-wrap gap-1.5">
                   {[
